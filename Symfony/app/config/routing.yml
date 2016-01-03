@@ -1,0 +1,7 @@
+#dream_market:
+#    resource: "@DreamMarketDreamMarketBundle/Resources/config/routing.yml"
+#    prefix:   /dream_market
+
+blog:
+    resource: "@MyBlogBundle/Resources/config/routing.yml"
+    prefix: /blog

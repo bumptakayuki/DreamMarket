@@ -1,0 +1,28 @@
+{% extends 'MyBlogBundle::base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <h1>Edit Post</h1>
+            <form action="{{ path('blog_edit', {'id':post.id}) }}" method="post" {{ form_enctype(form) }} novalidate>
+                {{ form_start(form) }}
+                {{ form_errors(form.title) }}
+                {{ form_errors(form.body) }}
+                {{ form_errors(form) }}
+
+                {{ form_row(form.title, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_row(form.body, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_row(form.image_path, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_row(form.limit_member, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_row(form.pref_area, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_rest(form) }}
+                <input type="submit" value="Save Post" class="btn btn-default btn-primary"/>
+
+            </form>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

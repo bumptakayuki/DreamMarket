@@ -1,0 +1,23 @@
+blog_index:
+    pattern:  /
+    defaults: { _controller: MyBlogBundle:Default:index }
+
+blog_new:
+    pattern:  /new
+    defaults: { _controller: MyBlogBundle:Default:new }
+
+blog_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MyBlogBundle:Default:show }
+
+blog_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: MyBlogBundle:Default:delete }
+
+blog_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: MyBlogBundle:Default:edit }
+
+blog_search:
+    pattern:  /search
+    defaults: { _controller: MyBlogBundle:Default:search }

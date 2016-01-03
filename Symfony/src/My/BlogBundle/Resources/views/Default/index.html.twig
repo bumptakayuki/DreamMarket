@@ -1,0 +1,217 @@
+{% extends 'MyBlogBundle::base.html.twig' %}
+{% block body %}
+    <div class="container-about">
+        <div class="container">
+            <div class="page-header" id="about">
+                <h1 class="text-center text-info">ABOUT<br/><span class="fa fa-user"></span></h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-justify">
+                    本気で実現したい企画アイデアと本気で実現したい仲間が集まるクラウドチーミングサービスです。<br>
+                    「やりたいことがある！」「でもやり方は分からないし、一緒にやる人も必要…」<br>
+                    <br>
+                    とっても素敵なアイデアがあるのに、スキルや経験、仲間が足りないという理由で<br>
+                    実現できないなんていうことはありませんか？？<br>
+                    「やりたいという強い想いを持ったアイデアがあれば、それに仲間とアイデアが集まり実現できてしまう」<br>
+                    そんな風になったら、すごく面白い社会になると思いませんか？<br>
+                    ココカラはそんな社会を実現するためのに作られたwebサービスです。<br>
+                    ココカラには、あなたのアイデアを掲載することができ、そのアイデアに仲間とアイデアを集めることができます。<br>
+
+                </div>
+                <div class="col-md-6 text-justify">
+                    「気仙沼にある仮設住宅施設をイルミネーションで飾ろう」、<br>
+                    「絵を飾れるカフェを作って若い芸術家たちにチャンスを与えよう」、<br>
+                    「日本中で子どもたちの笑顔の写真を撮って平和を世界に訴えよう」、<br>
+                    「新米パパが集まって子育てについて話し合える場を作ろう」などなど、<br>
+                    ココカラには本当に素敵な企画とそれを実現するための仲間がたくさん集まっています。<br>
+                    ココカラは、あなたのやりたいをカタチにできる一番の場所を目指します。<br>
+                    ココカラにあなたのアイデアを共有して、一緒に日本をワクワクさせましょう！<br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix hidden-xs" style="width:100%; height:60px;"></div>
+
+    <div class="container-projects">
+        <div class="clearfix hidden-xs" style="width:100%; height:10px;"></div>
+        <div class="container">
+            <div class="page-header" id="projects">
+                <h1 class="text-center text-danger">PROJECTS<br/><span class="fa fa-paint-brush"></span></h1>
+            </div>
+
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <img src="{{ asset(post.imagePath) }}" class="img-responsive"/>
+                                <h3><a href="{{ path('blog_show', {'id':post.id}) }}">{{ post.title }}</a></h3>
+                                <p>0/{{ post.limitMember }}人</p>
+                                <p>{{ post.prefArea }}</p>
+                                {#<p>{{ post.createdAt|date('Y/m/d H:i') }}</p>#}
+                                <ul class="list-unstyled ">
+                                {% for tag in post.tags %}
+                                        <li class="btn btn-default">{{ tag.tagName }}</li>
+                                {% endfor %}
+                                </ul>
+
+                                <span class="btn btn-success"><a href="{{ path('blog_delete', {'id':post.id}) }}">Delete</span></a>
+                                <span class="btn btn-success"><a href="{{ path('blog_edit', {'id':post.id}) }}">Edit</a></span>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <tr>
+                        <td colspan="4">No posts found</td>
+                    </tr>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
+    </div>
+
+    <div class="container-gallery">
+        <div class="container">
+            <div class="page-header" id="gallery">
+                <h1 class="text-center text-success">GALLERY<br/><span class="fa fa-camera"></span></h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="list-unstyled text-center">
+                        <li class="filter btn btn-success" data-filter="all">ALL</li>
+                        <li class="filter btn btn-success" data-filter=".graphic">GRAPHICS</li>
+                        <li class="filter btn btn-success" data-filter=".print">PRINT</li>
+                        <li class="filter btn btn-success" data-filter=".webdesign">WEB DESIGN</li>
+                    </ul>
+                </div>
+                <div class="mix graphic col-md-4">
+                    <a href="{{ asset('images/gallery/gallery1.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery1.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix print col-md-4">
+                    <a href="{{ asset('images/gallery/gallery2.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery2.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix webdesign col-md-4">
+                    <a href="{{ asset('images/gallery/gallery3.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery3.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix webdesign col-md-4">
+                    <a href="{{ asset('images/gallery/gallery4.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery4.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix print col-md-4">
+                    <a href="{{ asset('images/gallery/gallery5.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery5.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix graphic col-md-4">
+                    <a href="{{ asset('images/gallery/gallery6.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery6.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix webdesign col-md-4">
+                    <a href="{{ asset('images/gallery/gallery7.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery7.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix webdesign col-md-4">
+                    <a href="{{ asset('images/gallery/gallery8.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery8.jpg') }}"/>
+                    </a>
+                </div>
+                <div class="mix graphic col-md-4">
+                    <a href="{{ asset('images/gallery/gallery9.jpg') }}" class="img-wrapper">
+                        <img class="img-responsive" src="{{ asset('images/gallery/gallery9.jpg') }}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
+    </div>
+
+    <div class="container-team">
+        <div class="container">
+            <div class="page-header" id="team">
+                <h1 class="text-center text-warning">TEAM<br/><span class="fa fa-users"></span></h1>
+                <p class="text-center">
+                    少数精鋭のメンバーで運営しています！ <br/>
+
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-warning">
+                        <div class="panel-body">
+                            <img src="{{ asset('images/suzuki_01.png') }}" class="img-responsive"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-warning">
+                        <div class="panel-body">
+                            <img src="{{ asset('images/team2.jpg') }}" class="img-responsive"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-warning">
+                        <div class="panel-body">
+                            <img src="{{ asset('images/team3.jpg') }}" class="img-responsive"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-warning">
+                        <div class="panel-body">
+                            <img src="{{ asset('images/team4.jpg') }}" class="img-responsive"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
+    </div>
+
+    <div class="container-contacts">
+        <div class="container">
+            <div class="page-header" id="contact">
+                <h1 class="text-center text-primary">CONTACT US<br/><span class="fa fa-phone"></span></h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="googlemap"></div>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="form-name">Name</label>
+                            <input type="email" class="form-control" id="form-name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Email Address</label>
+                            <input type="email" class="form-control" id="form-email" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject">Subject</label>
+                            <input type="text" class="form-control" id="form-subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea class="form-control" id="form-message" placeholder="Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
